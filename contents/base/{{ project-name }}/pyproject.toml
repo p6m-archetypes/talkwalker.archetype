@@ -1,0 +1,69 @@
+[tool.poetry]
+name = "{{ project-name }}"
+version = "1.0.89"
+description = "{{ project-title }}"
+
+authors = [
+    "{{ author_full }}",
+    "Archetect <archetect@github.io>",
+]
+
+readme = "README.md"
+packages = [
+    { include = "{{ project_name }}", from = "src" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+{% if "talkwalker" in features -%}
+
+# talkwalker
+boto3 = "^1.28.62"
+requests = "^2.31.0"
+fake-useragent = "^1.5.1"
+newspaper4k = "^0.9.3.1"  # original is newspaper3k = "^0.2.8" but not updated since September 2020
+lxml = "^5.1.0"
+lxml-html-clean = "^0.1.0"
+nltk = "^3.8.1"
+typing-extensions = "^4.11.0"
+pydantic = "^2.7.1"
+twitter_{{ org_name }}_{{ venture_name }} = {version = "^1.0.0", source = "{{ org_name }}_{{ venture_name }}_pypi_local"}
+driver_library_{{ org_name }}_{{ venture_name }}= {version = "^1.0.1", source = "{{ org_name }}_{{ venture_name }}_pypi_local"}
+{% endif %}
+{% if "ETL" in features %}
+
+# ETL
+pyspark = "3.5.0"
+data-lib = {version = "^0.1.4", source = "{{ org_name }}_{{ venture_name }}_pypi_local"}
+{% endif %}
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.4"
+flake8 = "^6.1.0"
+
+[[tool.poetry.source]]
+name = "{{ org_name }}_{{ venture_name }}_pypi"
+url = "https://p6m-dev.jfrog.io/artifactory/api/pypi/{{ org-name }}-{{ venture-name }}-pypi/simple"
+priority = "supplemental"
+
+[[tool.poetry.source]]
+name = "{{ org_name }}_{{ venture_name }}_pypi_local"
+url = "https://p6m-dev.jfrog.io/artifactory/api/pypi/{{ org-name }}-{{ venture-name }}-pypi-local/simple"
+priority = "supplemental"
+
+[[tool.poetry.source]]
+name = "{{ org_name }}_{{ venture_name }}_pypi_push"
+url = "https://p6m-dev.jfrog.io/artifactory/api/pypi/{{ org-name }}-{{ venture-name }}-pypi"
+priority = "supplemental"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+
+[tool.poetry.scripts]
+main = "{{ project_name }}.main:main"
+docker-build = "manage.docker:docker_build"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

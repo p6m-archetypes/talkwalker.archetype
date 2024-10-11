@@ -1,0 +1,13 @@
+# configmap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: talkwalker-cmap-dev-{{ org-name }}-{{ venture-name }}
+data:
+  page_size: "100"
+  max_retries: "20"
+  bucket_location: "data-dev-{{ region-name }}-{{ org-name }}-{{ venture-name }}"
+  tw_backfill_start_date: "2024-04-09"
+  tw_project_id: "ad6bc12c-bb4e-4cbd-9d27-3250d40d6305"
+  tw_topic_id: "lp1tech7_gq0y2dnq4fgv"
+  tw_download_news: "False"
