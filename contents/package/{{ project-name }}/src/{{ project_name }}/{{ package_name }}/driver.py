@@ -8,9 +8,9 @@ from datetime import datetime
 from .credits import get_credits_estimation
 from .record import TalkwalkerRecord
 from .source import TalkwalkerSource
-from twitter_{{ org_name }}_{{ venture_name }}.twitter.source import TwitterSource
-from driver_library_{{ org_name }}_{{ venture_name }}.driver_library.utils.s3.s3_object_store import S3
-from driver_library_{{ org_name }}_{{ venture_name }}.driver_library.utils.md5.MD5Generator import MD5Source
+from twitter_{{ org_name }}_{{ solution_name }}.twitter.source import TwitterSource
+from driver_library_{{ org_name }}_{{ solution_name }}.driver_library.utils.s3.s3_object_store import S3
+from driver_library_{{ org_name }}_{{ solution_name }}.driver_library.utils.md5.MD5Generator import MD5Source
 
 
 logger = logging.getLogger(__name__)
@@ -274,7 +274,7 @@ class Driver:
 
             # validate project id and topic id
 
-            project_name, (topic_name, venture_name) = self.talk_walker.get_project_topic_names(project_id, topic_id)
+            project_name, (topic_name, solution_name) = self.talk_walker.get_project_topic_names(project_id, topic_id)
 
             """
             check if the topic is valid and that we have enough credits
@@ -440,7 +440,7 @@ class Driver:
                 "topic_name": topic_name,
                 "vendor_name": "talkwalker",
                 "source_format": "json",
-                "venture_name": venture_name,
+                "solution_name": solution_name,
             }
 
             self.logger.info(f'talkwalker output = {data}')

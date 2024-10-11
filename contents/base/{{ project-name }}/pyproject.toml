@@ -28,14 +28,14 @@ lxml-html-clean = "^0.1.0"
 nltk = "^3.8.1"
 typing-extensions = "^4.11.0"
 pydantic = "^2.7.1"
-twitter_{{ org_name }}_{{ venture_name }} = {version = "^1.0.0", source = "{{ org_name }}_{{ venture_name }}_pypi_local"}
-driver_library_{{ org_name }}_{{ venture_name }}= {version = "^1.0.1", source = "{{ org_name }}_{{ venture_name }}_pypi_local"}
+twitter_{{ org_name }}_{{ solution_name }} = {version = "^1.0.0", source = "{{ org_name }}_{{ solution_name }}_pypi_local"}
+driver_library_{{ org_name }}_{{ solution_name }}= {version = "^1.0.1", source = "{{ org_name }}_{{ solution_name }}_pypi_local"}
 {% endif %}
 {% if "ETL" in features %}
 
 # ETL
 pyspark = "3.5.0"
-data-lib = {version = "^0.1.4", source = "{{ org_name }}_{{ venture_name }}_pypi_local"}
+data-lib = {version = "^0.1.4", source = "{{ org_name }}_{{ solution_name }}_pypi_local"}
 {% endif %}
 
 [tool.poetry.group.dev.dependencies]
@@ -43,18 +43,18 @@ pytest = "^7.4.4"
 flake8 = "^6.1.0"
 
 [[tool.poetry.source]]
-name = "{{ org_name }}_{{ venture_name }}_pypi"
-url = "https://p6m-dev.jfrog.io/artifactory/api/pypi/{{ org-name }}-{{ venture-name }}-pypi/simple"
+name = "{{ org_name }}_{{ solution_name }}_pypi"
+url = "https://p6m-dev.jfrog.io/artifactory/api/pypi/{{ org-name }}-{{ solution-name }}-pypi/simple"
 priority = "supplemental"
 
 [[tool.poetry.source]]
-name = "{{ org_name }}_{{ venture_name }}_pypi_local"
-url = "https://p6m-dev.jfrog.io/artifactory/api/pypi/{{ org-name }}-{{ venture-name }}-pypi-local/simple"
+name = "{{ org_name }}_{{ solution_name }}_pypi_local"
+url = "https://p6m-dev.jfrog.io/artifactory/api/pypi/{{ org-name }}-{{ solution-name }}-pypi-local/simple"
 priority = "supplemental"
 
 [[tool.poetry.source]]
-name = "{{ org_name }}_{{ venture_name }}_pypi_push"
-url = "https://p6m-dev.jfrog.io/artifactory/api/pypi/{{ org-name }}-{{ venture-name }}-pypi"
+name = "{{ org_name }}_{{ solution_name }}_pypi_push"
+url = "https://p6m-dev.jfrog.io/artifactory/api/pypi/{{ org-name }}-{{ solution-name }}-pypi"
 priority = "supplemental"
 
 [tool.pytest.ini_options]

@@ -77,7 +77,7 @@ class TalkwalkerSource:
         for project in root["projects"]:
             for topic in project["topics"]:
                 for node in topic["nodes"]:
-                    rc[node["id"]] = (node["title"], topic["title"]) # (topic_name, venture_name)  tuple
+                    rc[node["id"]] = (node["title"], topic["title"]) # (topic_name, solution_name)  tuple
 
         return rc
 
@@ -87,7 +87,7 @@ class TalkwalkerSource:
 
         topics = self.get_all_topic_ids(project_id)
 
-        # note:returns project_name, (topic_name, venture_name)
+        # note:returns project_name, (topic_name, solution_name)
 
         return projects[project_id], topics[topic_id]
 
