@@ -54,6 +54,8 @@ env:
   AWS_ACCESS_KEY_ID: ${{'{'}}{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{'{'}}{ secrets.AWS_SECRET_ACCESS_KEY }}
 
+permissions: write-all
+
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
